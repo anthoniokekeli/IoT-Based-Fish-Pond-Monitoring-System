@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "author": "IoT-based Fish Pond Monitory",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -51, "left": -131.6, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -9.6, "left": 292.84, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -135.7, "left": 67, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -128.4,
+      "left": -82.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 3.95,
+      "left": -48,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -128.4,
+      "left": -111.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -128.4,
+      "left": -178.6,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 32.75,
+      "left": -105.6,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 23.15,
+      "left": -67.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 61.55,
+      "left": -28.8,
+      "attrs": { "value": "4700" }
+    },
+    { "type": "board-ds18b20", "id": "temp1", "top": -125.93, "left": -43.92, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": -135.7, "left": -9.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "bb1:bp.24", "red", [ "h0" ] ],
+    [ "esp:GND.1", "bb1:bn.25", "black", [ "h0" ] ],
+    [ "pot1:GND", "bb1:bn.18", "black", [ "v0" ] ],
+    [ "pot1:VCC", "bb1:bp.20", "red", [ "v0" ] ],
+    [ "r1:2", "bb1:bp.11", "green", [ "v0" ] ],
+    [ "led3:A", "r2:1", "green", [ "v0", "h28.8" ] ],
+    [ "r2:2", "bb1:bp.5", "green", [ "v96", "h-10.8" ] ],
+    [ "r3:2", "bb1:bp.9", "green", [ "v0" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "led2:A", "r3:1", "green", [ "v0" ] ],
+    [ "esp:0", "bb1:tn.19", "green", [ "h48", "v-172.8" ] ],
+    [ "pot1:SIG", "bb1:tn.19", "green", [ "v0" ] ],
+    [ "led3:C", "esp:15", "green", [ "v297.6", "h576.4", "v-48" ] ],
+    [ "esp:17", "led2:C", "green", [ "h28.8", "v115.2", "h-518.4" ] ],
+    [ "esp:16", "led1:C", "green", [ "h19.2", "v115.2", "h19.2" ] ],
+    [ "temp1:GND", "bb1:bn.6", "black", [ "v0" ] ],
+    [ "temp1:DQ", "bb1:9b.f", "green", [ "v0" ] ],
+    [ "bb1:15b.h", "bb1:bp.12", "green", [ "v0" ] ],
+    [ "bb1:15b.h", "r4:2", "green", [ "v-19.2" ] ],
+    [ "temp1:VCC", "bb1:bp.14", "red", [ "v19.2", "h48" ] ],
+    [ "bb1:bp.15", "esp:4", "green", [ "v56.7", "h376", "v-57.6" ] ],
+    [ "pot2:VCC", "bb1:bp.13", "red", [ "v0" ] ],
+    [ "pot2:GND", "bb1:bn.10", "black", [ "v19.2", "h-28.8" ] ],
+    [ "pot2:SIG", "esp:34", "green", [ "v0" ] ],
+    [ "r1:1", "bb1:7t.b", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:13t.b", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:1t.e", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:7t.e", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:5t.d", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:11t.d", "", [ "$bb" ] ],
+    [ "r4:1", "bb1:9b.f", "", [ "$bb" ] ],
+    [ "r4:2", "bb1:15b.f", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
